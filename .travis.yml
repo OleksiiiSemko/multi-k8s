@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t oleksiisemko/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t romb1k/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true oleksiisemko/react-test npm test
+  - docker run -e CI=true romb1k/react-test npm test
 
 after_success:
-  - docker build -t oleksiisemko/multi-client ./client
-  - docker build -t oleksiisemko/multi-nginx ./nginx
-  - docker build -t oleksiisemko/multi-server ./server
-  - docker build -t oleksiisemko/multi-worker ./worker
+  - docker build -t romb1k/multi-client ./client
+  - docker build -t romb1k/multi-nginx ./nginx
+  - docker build -t romb1k/multi-server ./server
+  - docker build -t romb1k/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push oleksiisemko/multi-client
-  - docker push oleksiisemko/multi-nginx
-  - docker push oleksiisemko/multi-server
-  - docker push oleksiisemko/multi-worker
+  - docker push romb1k/multi-client
+  - docker push romb1k/multi-nginx
+  - docker push romb1k/multi-server
+  - docker push romb1k/multi-worker
