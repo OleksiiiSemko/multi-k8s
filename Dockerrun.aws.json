@@ -1,6 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefenitions": [
+    "containerDefinitions": [
         {
             "name": "client",
             "image": "romb1k/multi-client",
